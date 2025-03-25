@@ -184,15 +184,15 @@
             <a-sky src="./images/1.png" radius="10" high-quality-texture better-filter texture-tweak></a-sky>
 
             <!-- Gaze Planes (For Headset Tracking) -->
-            <a-plane id="main_entrance" class="gaze-plane" position="-7 -0.3 0.3" width="2" rotation="0 90 0" height="3" color="blue" visible="false" material="opacity: 0.5; transparent: true"></a-plane>
-            <a-plane id="roof_sculpture" class="gaze-plane" position="-7 5.4 0.3" width="4" rotation="0 90 0" height="2.5" color="green" visible="false" material="opacity: 0.5; transparent: true"></a-plane>
+            <a-plane id="main_entrance" class="gaze-plane" position="-7 -0.3 0.3" width="2" rotation="0 90 0" height="3" color="blue" visible="false" material="opacity: 0; transparent: true"></a-plane>
+            <a-plane id="roof_sculpture" class="gaze-plane" position="-7 5.4 0.3" width="4" rotation="0 90 0" height="2.5" color="green" visible="false" material="opacity: 0; transparent: true"></a-plane>
 
             <!-- Scene 1 Audio -->
             <audio id="main_entrance_audio" src="./audio/main_entrance.wav" preload="auto"></audio>
             <audio id="roof_sculpture_audio" src="./audio/roof_sculpture.wav" preload="auto"></audio>
 
             <!-- Display Gaze Data -->
-            <a-entity id="gaze-data-display" position="-1 2 -2" text="value: Loading...; align: center; color: white; width: 2;"></a-entity>
+            <a-entity id="gaze-data-display" position="-1 2 -2" text="value: Loading...; align: center; color: white; width: 2; opacity: 0"></a-entity>
 
             <!-- Scene 2 Button -->
             <a-plane id="scene2-button" position="0 1.5 -3" width="1" height="0.5" color="blue" visible="false" material="opacity: 0.8; transparent: true"
@@ -205,15 +205,15 @@
             <a-sky src="./images/2.png" radius="10" high-quality-texture better-filter texture-tweak></a-sky>
 
             <!-- Gaze Planes (For Headset Tracking) -->
-            <a-plane id="mosaic_tiles" class="gaze-plane" position="1.2 0 0" rotation="-90 0 0" width="2" height="5" material="opacity: 0.4; transparent: true" color="purple" visible="false"></a-plane>
-            <a-plane id="wood_carvings" class="gaze-plane" position="8 5 0.5" rotation="40 -90 0" width="5" height="3" material="opacity: 0.4; transparent: true" color="brown" visible="false"></a-plane>
+            <a-plane id="mosaic_tiles" class="gaze-plane" position="1.2 0 0" rotation="-90 0 0" width="2" height="5" material="opacity: 0; transparent: true" color="purple" visible="false"></a-plane>
+            <a-plane id="wood_carvings" class="gaze-plane" position="8 5 0.5" rotation="40 -90 0" width="5" height="3" material="opacity: 0; transparent: true" color="brown" visible="false"></a-plane>
 
             <!-- Scene 2 Audio -->
             <audio id="mosaic_tiles_audio" src="./audio/mosaic_tiles.wav" preload="auto"></audio>
             <audio id="wood_carvings_audio" src="./audio/wood_carvings.wav" preload="auto"></audio>
 
             <!-- Display Gaze Data -->
-            <a-entity id="scene2-gaze-data-display" position="-1 2 -2" text="value: Loading...; align: center; color: white; width: 2;"></a-entity>
+            <a-entity id="scene2-gaze-data-display" position="-1 2 -2" text="value: Loading...; align: center; color: white; width: 2; opacity: 0;"></a-entity>
 
             <!-- Finish Button -->
             <a-plane id="finish-button" position="0 1.5 -2" width="1" height="0.5" color="green" material="opacity: 0.8; transparent: true" visible="false"
@@ -546,7 +546,7 @@
 
         // Send Data to SheetDB
         function sendDataToSheetDB(data) {
-            const apiUrl = "https://sheetdb.io/api/v1/i1cfnsrftobld"; // Replace with your SheetDB API URL
+            const apiUrl = "https://sheetdb.io/api/v1/5cy819hbdc5b8"; // Replace with your SheetDB API URL
 
             console.log("Sending data to SheetDB:", data); // Debugging: Log the data being sent
 
