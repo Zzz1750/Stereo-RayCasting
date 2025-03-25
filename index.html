@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spatial Audio in A-Frame</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <!-- Sky (Background) -->
+        <a-sky src="./images/1.png" radius="10"></a-sky>
+
+        <!-- Camera with Controls -->
+        <a-entity position="0 1.6 0">
+            <a-camera>
+                <a-cursor></a-cursor>
+            </a-camera>
+        </a-entity>
+
+        <!-- Spatial Audio Source Positioned to the Left -->
+        <a-entity position="-2 1.5 0" sound="src: #intro-audio; autoplay: true; loop: true; positional: true"></a-entity>
+
+        <!-- Audio Element (Hidden, Used as Source) -->
+        <audio id="intro-audio" src="./audio/intro.wav" preload="auto"></audio> 
+    </a-scene>
+</body>
+</html>
