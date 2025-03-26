@@ -158,6 +158,9 @@
     </div>
 
     <a-scene id="vr-scene" vr-mode-ui="enabled: true">
+
+        <!-- Background Audio -->
+        <audio id="background-audio" src="./audio/background_audio.wav" loop></audio>
         
         <!-- Right Hand Controller (For Clicking Buttons Only) -->
         <a-entity id="right-hand" laser-controls="hand: right" 
@@ -381,16 +384,21 @@
             }
         
             document.getElementById("name-form").style.display = "none";
-            document.querySelector("a-scene").style.display = "block"; // Show the a-scene element
+            document.querySelector("a-scene").style.display = "block";
+            
+            // Start background audio (new addition)
+            const bgAudio = document.getElementById("background-audio");
+            bgAudio.volume = 0.5; // Set appropriate volume
+            bgAudio.play().catch(e => {
+                console.log("Background audio play failed, will retry after interaction:", e);
+                document.addEventListener('click', () => bgAudio.play(), { once: true });
+            });
         
             function showIntroScene() {
                 introScene.setAttribute("visible", "true");
                 
-                // Ensure audio is properly loaded and play it
-                introAudio.load();
                 introAudio.play().catch(e => {
                     console.error("Audio play failed:", e);
-                    // Try again with user interaction
                     document.addEventListener('click', function() {
                         introAudio.play().catch(e => console.error("Retry failed:", e));
                     }, { once: true });
@@ -404,7 +412,7 @@
         
                 setTimeout(() => {
                     scene1Button.setAttribute("visible", "true");
-                    scene1Button.classList.add("clickable"); // Make button clickable
+                    scene1Button.classList.add("clickable");
                 }, 24000);
             }
         
@@ -573,6 +581,10 @@
 
         // Finish Button Click Handler
         function onFinishButtonClick() {
+            // Hide the finish button immediately
+            document.getElementById("finish-button").setAttribute("visible", "false");
+            document.getElementById("finish-button").classList.remove("clickable");
+            
             const name = document.getElementById("username").value;
 
             // Prepare the data for SheetDB
@@ -607,16 +619,15 @@
                 },
             ];
 
-            console.log("Prepared data for SheetDB:", data); // Debugging: Log the prepared data
+            console.log("Prepared data for SheetDB:", data);
 
             // Send the data to SheetDB
             sendDataToSheetDB(data);
 
-            sendDataToSheetDB(data).then(() => {
+            // Redirect after a short delay (2 seconds)
+            setTimeout(() => {
                 window.location.href = "https://zzz1750.github.io/Audio-Impact-Analysis-in-VR/";
-            }).catch(error => {
-                console.error("Error sending data:", error);
-            });
+            }, 2000);
         }
 
         // Add event listener to the Finish button
