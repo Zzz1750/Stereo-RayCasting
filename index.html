@@ -612,7 +612,11 @@
             // Send the data to SheetDB
             sendDataToSheetDB(data);
 
-
+            sendDataToSheetDB(data).then(() => {
+                window.location.href = "https://zzz1750.github.io/Audio-Impact-Analysis-in-VR/";
+            }).catch(error => {
+                console.error("Error sending data:", error);
+            });
         }
 
         // Add event listener to the Finish button
